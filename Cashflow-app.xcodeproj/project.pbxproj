@@ -27,6 +27,7 @@
 		A9F4C2CC25379680006C66EF /* DataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2CB2537967F006C66EF /* DataInteractor.swift */; };
 		A9F4C2D4253799BA006C66EF /* GraphsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2D3253799BA006C66EF /* GraphsAssembly.swift */; };
 		A9F4C2D725379A16006C66EF /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2D625379A16006C66EF /* DataViewController.swift */; };
+		A9F4C2E125379CDC006C66EF /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2E025379CDC006C66EF /* RealmManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		A9F4C2CB2537967F006C66EF /* DataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInteractor.swift; sourceTree = "<group>"; };
 		A9F4C2D3253799BA006C66EF /* GraphsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GraphsAssembly.swift; path = "Cashflow-app/Modules/Graphs/GraphsAssembly.swift"; sourceTree = SOURCE_ROOT; };
 		A9F4C2D625379A16006C66EF /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
+		A9F4C2E025379CDC006C66EF /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		CB6BBFCDB07B920F531C6CDC /* Pods-Cashflow-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cashflow-app.release.xcconfig"; path = "Target Support Files/Pods-Cashflow-app/Pods-Cashflow-app.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -274,6 +276,7 @@
 		A94667CB2532B27E0066A317 /* Cashflow-app */ = {
 			isa = PBXGroup;
 			children = (
+				A9F4C2DE25379CCE006C66EF /* Services */,
 				A928211D2532B7B1001D365B /* Base */,
 				A928211C2532B7AC001D365B /* Entities */,
 				A92821092532B48A001D365B /* Modules */,
@@ -295,6 +298,22 @@
 				A94667E72532B3820066A317 /* AppCoordinator.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		A9F4C2DE25379CCE006C66EF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A9F4C2DF25379CD3006C66EF /* Realm */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A9F4C2DF25379CD3006C66EF /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				A9F4C2E025379CDC006C66EF /* RealmManager.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		F1276B3E97241FEC2986B5EF /* Pods */ = {
@@ -424,6 +443,7 @@
 				A94667D12532B27E0066A317 /* ViewController.swift in Sources */,
 				A9D8FC8425337352001607FE /* ChartPie.swift in Sources */,
 				A9F4C2D4253799BA006C66EF /* GraphsAssembly.swift in Sources */,
+				A9F4C2E125379CDC006C66EF /* RealmManager.swift in Sources */,
 				A9F4C2C2253795D7006C66EF /* GraphsPresenterProtocols.swift in Sources */,
 				A94667CD2532B27E0066A317 /* AppDelegate.swift in Sources */,
 				A9D8FC8725337369001607FE /* BarGraph.swift in Sources */,
