@@ -35,17 +35,17 @@ class BaseViewController: UIViewController {
         self.view.backgroundColor = .white
         
         //TODO: -  fix me
-//        self.navigationController?.navigationBar.titleTextAttributes = [
-//            NSAttributedString.Key.font: UIFont.extraBoldItalic28,
-//            NSAttributedString.Key.foregroundColor: UIColor.textColorBlack
-//        ]
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font: UIFont(name: "AmericanTypewriter", size: 24),
+            NSAttributedString.Key.foregroundColor: UIColor.black
+        ]
         
-//        self.navigationController?.navigationBar.largeTitleTextAttributes = [
-//            NSAttributedString.Key.font: UIFont.extraBoldItalic48,
-//            NSAttributedString.Key.foregroundColor: UIColor.textColorBlack
-//        ]
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [
+            NSAttributedString.Key.font: UIFont(name: "AmericanTypewriter", size: 16),
+            NSAttributedString.Key.foregroundColor: UIColor.black
+        ]
     
-//        self.navigationController?.navigationBar.tintColor = .textColorGray
+        self.navigationController?.navigationBar.tintColor = .gray
         
 //        self.navigationController?.navigationBar.prefersLargeTitles = true
         

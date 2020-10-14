@@ -2,13 +2,13 @@
 //  DataViewController.swift
 //  Cashflow-app
 //
-//  Created by Meitar Basson on 14/10/2020.
+//  Created by Meitar Basson on 11/10/2020.
 //
 
-import Foundation
+import UIKit
 import SnapKit
 
-class DataViewController: UIViewController {
+class GraphsViewController: UIViewController {
     
     private lazy var dataTitle: UILabel = {
         let label = UILabel(frame: .zero)
@@ -63,7 +63,8 @@ class DataViewController: UIViewController {
         
         dataTitle.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.topMargin)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.topMargin).offset(24)
+//            make.bottom.equalTo(chartPie.snp.top).offset(50)
         }
     }
 }

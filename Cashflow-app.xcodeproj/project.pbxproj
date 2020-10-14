@@ -3,12 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1F02E04F9D03DB6AD0EB3E67 /* Pods_Cashflow_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218ED4091F7A9A37611BCF7B /* Pods_Cashflow_app.framework */; };
-		A928210E2532B4CF001D365B /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A928210D2532B4CF001D365B /* DataViewController.swift */; };
+		A928210E2532B4CF001D365B /* GraphsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A928210D2532B4CF001D365B /* GraphsViewController.swift */; };
 		A92821202532B7F4001D365B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A928211F2532B7F4001D365B /* BaseViewController.swift */; };
 		A94667CD2532B27E0066A317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94667CC2532B27E0066A317 /* AppDelegate.swift */; };
 		A94667CF2532B27E0066A317 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94667CE2532B27E0066A317 /* SceneDelegate.swift */; };
@@ -20,12 +20,19 @@
 		A9D8FC8425337352001607FE /* ChartPie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D8FC8325337352001607FE /* ChartPie.swift */; };
 		A9D8FC8725337369001607FE /* BarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D8FC8625337369001607FE /* BarGraph.swift */; };
 		A9D8FC8A2533737C001607FE /* LineGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D8FC892533737C001607FE /* LineGraph.swift */; };
+		A9F4C2BE253795B0006C66EF /* GraphsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2BD253795B0006C66EF /* GraphsViewInput.swift */; };
+		A9F4C2C2253795D7006C66EF /* GraphsPresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2C1253795D7006C66EF /* GraphsPresenterProtocols.swift */; };
+		A9F4C2C625379620006C66EF /* GraphsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2C525379620006C66EF /* GraphsPresenter.swift */; };
+		A9F4C2C925379665006C66EF /* DataInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2C825379665006C66EF /* DataInteractorInput.swift */; };
+		A9F4C2CC25379680006C66EF /* DataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2CB2537967F006C66EF /* DataInteractor.swift */; };
+		A9F4C2D4253799BA006C66EF /* GraphsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2D3253799BA006C66EF /* GraphsAssembly.swift */; };
+		A9F4C2D725379A16006C66EF /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2D625379A16006C66EF /* DataViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		129F25DD4FCEF07E866CC352 /* Pods-Cashflow-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cashflow-app.debug.xcconfig"; path = "Target Support Files/Pods-Cashflow-app/Pods-Cashflow-app.debug.xcconfig"; sourceTree = "<group>"; };
 		218ED4091F7A9A37611BCF7B /* Pods_Cashflow_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cashflow_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A928210D2532B4CF001D365B /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
+		A928210D2532B4CF001D365B /* GraphsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsViewController.swift; sourceTree = "<group>"; };
 		A928211F2532B7F4001D365B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A94667C92532B27E0066A317 /* Cashflow-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cashflow-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A94667CC2532B27E0066A317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +46,13 @@
 		A9D8FC8325337352001607FE /* ChartPie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPie.swift; sourceTree = "<group>"; };
 		A9D8FC8625337369001607FE /* BarGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraph.swift; sourceTree = "<group>"; };
 		A9D8FC892533737C001607FE /* LineGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraph.swift; sourceTree = "<group>"; };
+		A9F4C2BD253795B0006C66EF /* GraphsViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsViewInput.swift; sourceTree = "<group>"; };
+		A9F4C2C1253795D7006C66EF /* GraphsPresenterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsPresenterProtocols.swift; sourceTree = "<group>"; };
+		A9F4C2C525379620006C66EF /* GraphsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsPresenter.swift; sourceTree = "<group>"; };
+		A9F4C2C825379665006C66EF /* DataInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInteractorInput.swift; sourceTree = "<group>"; };
+		A9F4C2CB2537967F006C66EF /* DataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInteractor.swift; sourceTree = "<group>"; };
+		A9F4C2D3253799BA006C66EF /* GraphsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GraphsAssembly.swift; path = "Cashflow-app/Modules/Graphs/GraphsAssembly.swift"; sourceTree = SOURCE_ROOT; };
+		A9F4C2D625379A16006C66EF /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		CB6BBFCDB07B920F531C6CDC /* Pods-Cashflow-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cashflow-app.release.xcconfig"; path = "Target Support Files/Pods-Cashflow-app/Pods-Cashflow-app.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,13 +79,13 @@
 		A92821092532B48A001D365B /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				A928210B2532B4AE001D365B /* Data */,
-				A928210A2532B49F001D365B /* Graphs */,
+				A928210A2532B49F001D365B /* Data */,
+				A928210B2532B4AE001D365B /* Graphs */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		A928210A2532B49F001D365B /* Graphs */ = {
+		A928210A2532B49F001D365B /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				A928211B2532B77D001D365B /* View */,
@@ -81,10 +95,10 @@
 				A92821172532B766001D365B /* Router */,
 				A92821162532B75B001D365B /* Assembly */,
 			);
-			path = Graphs;
+			path = Data;
 			sourceTree = "<group>";
 		};
-		A928210B2532B4AE001D365B /* Data */ = {
+		A928210B2532B4AE001D365B /* Graphs */ = {
 			isa = PBXGroup;
 			children = (
 				A928210C2532B4BF001D365B /* View */,
@@ -94,13 +108,14 @@
 				A92821112532B70C001D365B /* Router */,
 				A92821102532B708001D365B /* Assembly */,
 			);
-			path = Data;
+			path = Graphs;
 			sourceTree = "<group>";
 		};
 		A928210C2532B4BF001D365B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A928210D2532B4CF001D365B /* DataViewController.swift */,
+				A928210D2532B4CF001D365B /* GraphsViewController.swift */,
+				A9F4C2BD253795B0006C66EF /* GraphsViewInput.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -108,6 +123,7 @@
 		A92821102532B708001D365B /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
+				A9F4C2D3253799BA006C66EF /* GraphsAssembly.swift */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
@@ -122,6 +138,8 @@
 		A92821122532B710001D365B /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				A9F4C2C825379665006C66EF /* DataInteractorInput.swift */,
+				A9F4C2CB2537967F006C66EF /* DataInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -129,6 +147,8 @@
 		A92821132532B715001D365B /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				A9F4C2C1253795D7006C66EF /* GraphsPresenterProtocols.swift */,
+				A9F4C2C525379620006C66EF /* GraphsPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -178,6 +198,7 @@
 		A928211B2532B77D001D365B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A9F4C2D625379A16006C66EF /* DataViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -282,7 +303,6 @@
 				129F25DD4FCEF07E866CC352 /* Pods-Cashflow-app.debug.xcconfig */,
 				CB6BBFCDB07B920F531C6CDC /* Pods-Cashflow-app.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -399,15 +419,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9F4C2CC25379680006C66EF /* DataInteractor.swift in Sources */,
+				A9F4C2C625379620006C66EF /* GraphsPresenter.swift in Sources */,
 				A94667D12532B27E0066A317 /* ViewController.swift in Sources */,
 				A9D8FC8425337352001607FE /* ChartPie.swift in Sources */,
+				A9F4C2D4253799BA006C66EF /* GraphsAssembly.swift in Sources */,
+				A9F4C2C2253795D7006C66EF /* GraphsPresenterProtocols.swift in Sources */,
 				A94667CD2532B27E0066A317 /* AppDelegate.swift in Sources */,
 				A9D8FC8725337369001607FE /* BarGraph.swift in Sources */,
 				A94667E82532B3820066A317 /* AppCoordinator.swift in Sources */,
 				A94667E42532B32A0066A317 /* AppInteractor.swift in Sources */,
 				A9D8FC8A2533737C001607FE /* LineGraph.swift in Sources */,
-				A928210E2532B4CF001D365B /* DataViewController.swift in Sources */,
+				A9F4C2D725379A16006C66EF /* DataViewController.swift in Sources */,
+				A9F4C2C925379665006C66EF /* DataInteractorInput.swift in Sources */,
+				A928210E2532B4CF001D365B /* GraphsViewController.swift in Sources */,
 				A92821202532B7F4001D365B /* BaseViewController.swift in Sources */,
+				A9F4C2BE253795B0006C66EF /* GraphsViewInput.swift in Sources */,
 				A94667CF2532B27E0066A317 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
