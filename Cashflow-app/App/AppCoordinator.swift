@@ -20,7 +20,6 @@ class AppCoordinator {
 extension AppCoordinator {
     
     private func createGraphsVC() -> UINavigationController {
-//        let discoverViewController = DiscoverAssembly.assemble(endpoint: .getTopHeadlines)
         let graphsViewController = GraphsViewController()
         graphsViewController.tabBarItem = UITabBarItem(title: "Graphs", image: UIImage(systemName: "bandage"), selectedImage:  UIImage(systemName: "bandage"))
         return UINavigationController(rootViewController: graphsViewController)

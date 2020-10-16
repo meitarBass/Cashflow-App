@@ -37,7 +37,7 @@ class BaseViewController: UIViewController {
         
         //TODO: -  fix me
         self.navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.font: UIFont.regular24,
+            NSAttributedString.Key.font: UIFont.bold28,
             NSAttributedString.Key.foregroundColor: UIColor.black
         ]
     
@@ -76,7 +76,6 @@ class BaseViewController: UIViewController {
         self.indicator.stopAnimating()
     }
     
-    // MARK: Change to RxSwift
     func addKeyBoardObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)

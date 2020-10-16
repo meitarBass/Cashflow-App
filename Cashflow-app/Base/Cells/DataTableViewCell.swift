@@ -12,19 +12,6 @@ struct DataCellViewModel {
     let data: DataModel?
 }
 
-extension DataTableViewCell {
-    struct Appearance {
-//        let dateLabelFont: UIFont =
-//        let dateLabelFontColor: UIColor =
-        
-//        let categoryLabelFont: UIFont =
-//        let categoryLabelFontColor: UIColor =
-
-//        let amountLabelFont: UIFont =
-//        let amountLabelFontColor: UIColor =
-    }
-}
-
 class DataTableViewCell: UITableViewCell {
     
     var viewModel: DataCellViewModel? {
@@ -38,16 +25,22 @@ class DataTableViewCell: UITableViewCell {
     
     private lazy var dateLabel: UILabel = {
         let label = UILabel(frame: .zero)
+        label.font = .bold12
+        label.textColor = .dataViewLabels
         return label
     }()
     
     private lazy var categoryLabel: UILabel = {
         let label = UILabel(frame: .zero)
+        label.font = .bold20
+        label.textColor = .dataViewLabels
         return label
     }()
     
     private lazy var amountLabel: UILabel = {
         let label = UILabel(frame: .zero)
+        label.font = .bold15
+        label.textColor = .dataViewLabels
         return label
     }()
     
@@ -90,5 +83,17 @@ class DataTableViewCell: UITableViewCell {
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().inset(8)
         }
+    }
+    
+    func addGradientBackground() {
+        clipsToBounds = true
+        let gradientLayer = CAGradientLayer()
+        guard let category = categories(rawValue: viewModel?.data?.category ?? "") else { return }
+        let colors = category.getColors(category: category)
+        gradientLayer.colors = [colors.0.cgColor, colors.1.cgColor]
+        gradientLayer.frame = self.bounds
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        self.layer.insertSublayer(gradientLayer, at: 0)
     }
 }

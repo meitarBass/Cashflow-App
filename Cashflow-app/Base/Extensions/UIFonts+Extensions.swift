@@ -9,19 +9,33 @@ import UIKit
 
 extension UIFont {
     
-    //MARK: - extraBold
+    //MARK: - Bold
     
-    public class var extraBold28: UIFont {
-        UIFont.extraBold(with: 28.0)
+    public class var bold12: UIFont {
+        UIFont.bold(with: 12.0)
     }
     
-    //MARK: - Bold
+    public class var bold15: UIFont {
+        UIFont.bold(with: 15.0)
+    }
+    
+    public class var bold20: UIFont {
+        UIFont.bold(with: 20.0)
+    }
     
     public class var bold24: UIFont {
         UIFont.bold(with: 24.0)
     }
     
+    public class var bold28: UIFont {
+        UIFont.bold(with: 28.0)
+    }
+    
     //MARK: - regular
+    public class var regular8: UIFont {
+        UIFont.regular(with: 8.0)
+    }
+    
     public class var regular14: UIFont {
         UIFont.regular(with: 14.0)
     }
@@ -43,13 +57,6 @@ extension UIFont {
         
         case bold = "AmericanTypewriter-Bold"
         case boldItalic = "AmericanTypewriter-BoldItalic"
-        
-        case extraBold = "AmericanTypewriter-ExtraBold"
-        case extraBoldItalic = "AmericanTypewriter-ExtraBoldItalic"
-    }
-    
-    private static func extraBold(with size: CGFloat) -> UIFont {
-        self.font(with: .extraBold, size: size)
     }
     
     private static func bold(with size: CGFloat) -> UIFont {
@@ -66,10 +73,6 @@ extension UIFont {
     
     private static func mediumItalic(with size: CGFloat) -> UIFont {
         self.font(with: .mediumItalic, size: size)
-    }
-    
-    private static func extraBoldItalic(with size: CGFloat) -> UIFont {
-        self.font(with: .extraBoldItalic, size: size)
     }
     
     private static func regular(with size: CGFloat) -> UIFont {

@@ -7,16 +7,8 @@
 
 import UIKit
 
-extension ChartPie {
-    
-    struct Appearance {
-        
-        let lineWidth: CGFloat = 10.0
-        let radius: CGFloat = 70.0
-    }
-}
-
 struct CirclePath {
+    
     let fromColor: UIColor
     let toColor: UIColor
     let data: CGFloat
@@ -25,12 +17,14 @@ struct CirclePath {
     var endAngle: CGFloat?
     var path: CGPath?
     
-//    let category: Categories?
+    let category: categories?
 
-    init(fromColor: UIColor, toColor: UIColor, data: CGFloat) {
+    init(fromColor: UIColor, toColor: UIColor, data: CGFloat, category: categories) {
         self.fromColor = fromColor
         self.toColor = toColor
         self.data = data
+        
+        self.category = category
     }
     
     mutating func createPath(totalVal: CGFloat) {
@@ -42,31 +36,29 @@ struct CirclePath {
 
 class ChartPie: UIView {
     
-    let appearance = Appearance()
-    
-    var amounts: [CGFloat] =  [20.0, 40.0, 60.0]
-    var total: CGFloat = 120
-    
-    private var colors: [UIColor]?
     private var pulsatingColor: UIColor?
-    private var pulsatingLayer: CAShapeLayer!
-    private var textLayer: CATextLayer!
+    private var pulsatingLayer: CAShapeLayer?
+    
+    private var total: CGFloat?
     
     private var circleLayers: [CAShapeLayer] = [CAShapeLayer]()
     
-    private var data: Int!
+    private var expenses: [categories : CGFloat]?
 
-    let circularPath = UIBezierPath(arcCenter: .zero, radius: 70, startAngle: 0,
+    private let circularPath = UIBezierPath(arcCenter: .zero, radius: 70, startAngle: 0,
                                     endAngle: 2 * CGFloat.pi, clockwise: true)
     
-    init(frame: CGRect, fromColor: UIColor, toColor: UIColor, pulsatingColor: UIColor, data: Int) {
+    init(frame: CGRect, pulsatingColor: UIColor) {
         super.init(frame: frame)
-        colors = [fromColor, toColor]
         self.pulsatingColor = pulsatingColor
-        self.data = data
         
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
         setupNotificiationObservers()
+    }
+    
+    func setupUI(expenses: [categories : CGFloat], total: CGFloat) {
+        self.total = total
+        self.expenses = expenses
     }
     
     required init?(coder: NSCoder) {
@@ -75,28 +67,45 @@ class ChartPie: UIView {
 
     override func draw(_ rect: CGRect) {
         let center = CGPoint(x: rect.midX, y: rect.midY)
-        
-        guard let pulsatingColor = self.pulsatingColor else { return }
-        pulsatingLayer = createCircleShapeLayer(path: circularPath.cgPath, strokeColor: pulsatingColor,fillColor: .clear, center: center)
+        createAdditionalLayers(center: center)
         
         var endAngle: CGFloat = CGFloat(0)
-        
-        let trackLayer = createCircleShapeLayer(path: circularPath.cgPath, strokeColor: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), fillColor: .white, center: center)
-        layer.addSublayer(pulsatingLayer)
-        layer.addSublayer(trackLayer)
-        
-        for item in amounts {
-            var path = CirclePath(fromColor: .red, toColor: .green, data: item)
+    
+        guard let expenses = self.expenses, let total = self.total else { return }
+        for (category, amount) in expenses {
+            var path = CirclePath(fromColor: .white, toColor: .white,
+                                  data: amount, category: category)
             path.startAngle = endAngle
             path.createPath(totalVal: total)
-            
-            endAngle = path.startAngle! + 2 * CGFloat.pi * (item / total)
+            endAngle = path.startAngle! + 2 * CGFloat.pi * (amount / total)
                         
             let layer = createCircleShapeLayer(path: path.path!, strokeColor: .white, fillColor: .clear, center: center)
             
             circleLayers.append(layer)
-            self.addGradient(path: path, circleLayer: layer)
+            self.addGradient(path: path, total: total, circleLayer: layer)
         }
+    }
+    
+    private func createAdditionalLayers(center: CGPoint) {
+        guard let pulsatingColor = self.pulsatingColor else { return }
+        // Create pulsating layer
+        pulsatingLayer = createCircleShapeLayer(path: circularPath.cgPath,
+                                               strokeColor: pulsatingColor,
+                                               fillColor: .clear,
+                                               center: center)
+        
+        guard let pulsatingLayer = self.pulsatingLayer else { return }
+        
+        
+        layer.addSublayer(pulsatingLayer)
+        
+        // Create track layer
+        layer.addSublayer(createCircleShapeLayer(path: circularPath.cgPath,
+                                                 strokeColor: #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1),
+                                                 fillColor: .clear,
+                                                 center: center))
+        
+        layer.addSublayer(createTextLayer(textColor: #colorLiteral(red: 0.5741485357, green: 0.5741624236, blue: 0.574154973, alpha: 1)))
     }
     
     private func animatePulsingLayer() {
@@ -108,7 +117,7 @@ class ChartPie: UIView {
         animation.autoreverses = true
         animation.repeatCount = Float.infinity
         
-        pulsatingLayer.add(animation, forKey: "pulsing")
+        pulsatingLayer?.add(animation, forKey: "pulsing")
     }
     
     private func setupNotificiationObservers() {
@@ -139,15 +148,16 @@ class ChartPie: UIView {
         let width = frame.size.width
         let height = frame.size.height
         
-        let fontSize = min(width, height) / 4 - 5
-        let offset = min(width, height) * 0.1
+        let fontSize: CGFloat = 36.0
         
         let layer = CATextLayer()
-        layer.string = "\(Int(data * 100))"
+        
+        layer.string = "\(Int(total!))"
         layer.backgroundColor = UIColor.clear.cgColor
         layer.foregroundColor = textColor.cgColor
-        layer.font = UIFont(name: "AmericanTypewriter", size: fontSize)
-        layer.frame = CGRect(x: 0, y: (height - fontSize - offset) / 2, width: width, height: height)
+        layer.font = UIFont(name: "AmericanTypewriter-Bold", size: fontSize)
+        layer.fontSize = fontSize
+        layer.frame = CGRect(x: 0, y: (height - fontSize) / 2 - 4, width: width, height: height)
         layer.alignmentMode = .center
         
         return layer
@@ -161,12 +171,12 @@ class ChartPie: UIView {
         
         for layer in circleLayers {
             let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
-            basicAnimation.fromValue = 0.0
+            basicAnimation.fromValue = 0.01
             
             basicAnimation.duration = 2.0
             basicAnimation.fillMode = CAMediaTimingFillMode.forwards
             basicAnimation.isRemovedOnCompletion = false
-            basicAnimation.toValue = 1.0
+            basicAnimation.toValue = 0.99
             
             layer.strokeEnd = 1.0
             layer.add(basicAnimation, forKey: "urSoBasic")
@@ -175,7 +185,7 @@ class ChartPie: UIView {
         animatePulsingLayer()
     }
     
-    private func addGradient(path: CirclePath, circleLayer: CAShapeLayer) {
+    private func addGradient(path: CirclePath, total: CGFloat, circleLayer: CAShapeLayer) {
         let gradient = CAGradientLayer()
         
         let startAngle = path.startAngle!
@@ -186,7 +196,11 @@ class ChartPie: UIView {
             
         gradient.locations = [0.0, 1.0]
         
-        gradient.colors = [path.fromColor.cgColor, path.toColor.cgColor]
+        guard let category = path.category else { return }
+        let colors = category.getColors(category: category)
+        
+        gradient.colors = [colors.0.cgColor, colors.1.cgColor]
+        
         gradient.frame = bounds
         gradient.mask = circleLayer
         

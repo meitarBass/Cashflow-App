@@ -18,21 +18,21 @@ class AddDataViewController: BaseViewController {
     var presenter: AddDataPresenterProtocol?
     
     private lazy var dateView: CustomDataView = {
-        let view = CustomDataView(frame: .zero, title: "Date", message: "", color: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1))
+        let view = CustomDataView(frame: .zero, title: "Date", message: "", color: .buttonColor)
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dateClicked))
         view.addGestureRecognizer(tapGesture)
         return view
     }()
     
     private lazy var categoryView: CustomDataView = {
-        let view = CustomDataView(frame: .zero, title: "Date", message: "", color: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1))
+        let view = CustomDataView(frame: .zero, title: "Category", message: "", color: .buttonColor)
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(categoryClicked))
         view.addGestureRecognizer(tapGesture)
         return view
     }()
     
     private lazy var amountView: CustomDataView = {
-        let view = CustomDataView(frame: .zero, title: "Date", message: "", color: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1))
+        let view = CustomDataView(frame: .zero, title: "Amount", message: "", color: .buttonColor)
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(amountClicked))
         view.addGestureRecognizer(tapGesture)
         return view
@@ -49,8 +49,10 @@ class AddDataViewController: BaseViewController {
     private lazy var addButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.addTarget(self, action: #selector(addClicked), for: .touchUpInside)
-        button.setTitle("Button", for: .normal)
-        button.backgroundColor = .cyan
+        button.setTitle("Add new expense", for: .normal)
+        button.titleLabel?.font = .bold20
+        button.layer.cornerRadius = 8.0
+        button.backgroundColor = .buttonColor
         return button
     }()
     
@@ -116,8 +118,8 @@ class AddDataViewController: BaseViewController {
         }
         
         addButton.snp.makeConstraints { (make) in
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottomMargin)
+            make.leading.trailing.equalToSuperview().inset(48)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottomMargin).inset(36)
             make.height.equalTo(36)
         }
     }

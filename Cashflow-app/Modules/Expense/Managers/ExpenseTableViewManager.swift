@@ -63,6 +63,8 @@ extension ExpenseTableViewManager: UITableViewDataSource {
         }
         let cellViewModel = DataCellViewModel(data: cashFlow?[indexPath.row])
         cell.viewModel = cellViewModel
+        cell.backgroundColor = .clear
+        cell.addGradientBackground()
         return cell
     }
 }

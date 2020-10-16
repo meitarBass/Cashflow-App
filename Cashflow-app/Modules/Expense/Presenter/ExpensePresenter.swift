@@ -17,6 +17,7 @@ class ExpensePresenter {
     
 }
 
+// View to Presenter
 extension ExpensePresenter: ExpensePresenterProtocol {
     func viewDidLoad() {
         interactor?.loadData()
@@ -26,10 +27,12 @@ extension ExpensePresenter: ExpensePresenterProtocol {
     }
 }
 
+// Interactor to Presenter
 extension ExpensePresenter: ExpensePresenterInput {
     func gotDataSuccess(data: [DataModel]) {
         self.data = data
         self.tableViewManager?.setUpCells(data: data)
+        view?.getData(data: data)
     }
 }
 

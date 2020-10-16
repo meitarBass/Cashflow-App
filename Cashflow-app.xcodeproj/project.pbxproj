@@ -126,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				A9E287612538DA23004447CC /* AddData */,
-				A9F4C2F5253837B3006C66EF /* AddFlow */,
 				A928210A2532B49F001D365B /* Expense */,
 				A928210B2532B4AE001D365B /* Graphs */,
 			);
@@ -310,9 +309,9 @@
 		A92821242532B88D001D365B /* Graphs */ = {
 			isa = PBXGroup;
 			children = (
-				A9D8FC8325337352001607FE /* ChartPie.swift */,
-				A9D8FC8625337369001607FE /* BarGraph.swift */,
-				A9D8FC892533737C001607FE /* LineGraph.swift */,
+				A970C013253A482F00A994AB /* LineGraph */,
+				A970C012253A482900A994AB /* BarGraph */,
+				A970C011253A481F00A994AB /* ChartPie */,
 			);
 			path = Graphs;
 			sourceTree = "<group>";
@@ -359,6 +358,30 @@
 				A94667E72532B3820066A317 /* AppCoordinator.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		A970C011253A481F00A994AB /* ChartPie */ = {
+			isa = PBXGroup;
+			children = (
+				A9D8FC8325337352001607FE /* ChartPie.swift */,
+			);
+			path = ChartPie;
+			sourceTree = "<group>";
+		};
+		A970C012253A482900A994AB /* BarGraph */ = {
+			isa = PBXGroup;
+			children = (
+				A9D8FC8625337369001607FE /* BarGraph.swift */,
+			);
+			path = BarGraph;
+			sourceTree = "<group>";
+		};
+		A970C013253A482F00A994AB /* LineGraph */ = {
+			isa = PBXGroup;
+			children = (
+				A9D8FC892533737C001607FE /* LineGraph.swift */,
+			);
+			path = LineGraph;
 			sourceTree = "<group>";
 		};
 		A9E287502538CBC9004447CC /* Cells */ = {
@@ -453,13 +476,6 @@
 				A9F4C2EC25382A43006C66EF /* CustomDataView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		A9F4C2F5253837B3006C66EF /* AddFlow */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AddFlow;
 			sourceTree = "<group>";
 		};
 		F1276B3E97241FEC2986B5EF /* Pods */ = {

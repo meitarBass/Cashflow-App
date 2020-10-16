@@ -14,6 +14,10 @@ extension UIColor {
         #colorLiteral(red: 0.9857031703, green: 0.930950582, blue: 0.8956379294, alpha: 1)
     }
     
+    public class var buttonColor: UIColor {
+        #colorLiteral(red: 0.07843137255, green: 0.1176470588, blue: 0.2274509804, alpha: 1)
+    }
+    
     public class var gradientHousing: (UIColor, UIColor) {
         (#colorLiteral(red: 1, green: 0.6039215686, blue: 0.6196078431, alpha: 1), #colorLiteral(red: 0.9803921569, green: 0.8156862745, blue: 0.768627451, alpha: 1))
     }

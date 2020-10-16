@@ -28,7 +28,7 @@ class GraphsViewController: BaseViewController {
     }()
     
     private lazy var chartPie: ChartPie = {
-        let pie = ChartPie(frame: .zero, fromColor: #colorLiteral(red: 1, green: 0.6039215686, blue: 0.6196078431, alpha: 1), toColor: #colorLiteral(red: 0.9803921569, green: 0.8156862745, blue: 0.768627451, alpha: 1), pulsatingColor: #colorLiteral(red: 1, green: 0.9254901961, blue: 0.8235294118, alpha: 1), data: 76)
+        let pie = ChartPie(frame: .zero, pulsatingColor: #colorLiteral(red: 1, green: 0.9254901961, blue: 0.8235294118, alpha: 1))
         return pie
     }()
     
