@@ -8,15 +8,18 @@
 import Foundation
 
 struct Categories {
-    static let categoriesArr: [categories] = [.business, .entertainment, .general, .health, .science, .sports, .technology]
+    static let categoriesArr: [categories] = [.housing, .saving, .food, .transportation, .insurance, .debt, .entertainment, .medical, .giving, .shopping]
 }
 
 enum categories: String {
-    case business = "Business"
+    case housing = "Housing"
+    case saving = "Saving"
+    case food = "Food"
+    case transportation = "Transportation"
+    case insurance = "Insurance"
+    case debt = "Debt"
     case entertainment = "Entertainment"
-    case general = "General"
-    case health = "Health"
-    case science = "Science"
-    case sports = "Sports"
-    case technology = "Technology"
+    case medical = "Medical"
+    case giving = "Giving"
+    case shopping = "Shopping"
 }

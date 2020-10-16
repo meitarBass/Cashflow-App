@@ -25,6 +25,10 @@ extension UIFont {
     public class var regular14: UIFont {
         UIFont.regular(with: 14.0)
     }
+    
+    public class var regular24: UIFont {
+        UIFont.regular(with: 24.0)
+    }
 
     
     // MARK: - Private helpers

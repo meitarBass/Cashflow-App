@@ -37,7 +37,7 @@ class BaseViewController: UIViewController {
         
         //TODO: -  fix me
         self.navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.font: UIFont(name: "AmericanTypewriter", size: 24),
+            NSAttributedString.Key.font: UIFont.regular24,
             NSAttributedString.Key.foregroundColor: UIColor.black
         ]
     
