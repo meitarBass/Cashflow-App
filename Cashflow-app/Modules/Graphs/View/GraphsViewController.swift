@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class GraphsViewController: UIViewController {
+class GraphsViewController: BaseViewController {
     
     private lazy var dataTitle: UILabel = {
         let label = UILabel(frame: .zero)
@@ -34,23 +34,23 @@ class GraphsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpUi()
+        self.setUpUI()
     }
     
-    func setUpUi() {
+    override func setUpUI() {
         self.addSubviews()
         self.makeConstraints()
         
         self.view.backgroundColor = .white
     }
     
-    func addSubviews() {
+    override func addSubviews() {
 //        self.view.addSubview(lineGraph)
         self.view.addSubview(chartPie)
         self.view.addSubview(dataTitle)
     }
     
-    func makeConstraints() {
+    override func makeConstraints() {
 //        lineGraph.snp.makeConstraints { (make) in
 //            make.center.equalToSuperview()
 //            make.height.width.equalTo(250)

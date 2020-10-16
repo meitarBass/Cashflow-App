@@ -1,0 +1,12 @@
+//
+//  AddDataInteractorInput.swift
+//  Cashflow-app
+//
+//  Created by Meitar Basson on 15/10/2020.
+//
+
+import Foundation
+
+protocol AddDataInteractorInput {
+    func saveData(data: DataModel)
+}

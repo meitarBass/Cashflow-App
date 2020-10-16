@@ -26,18 +26,17 @@ extension AppCoordinator {
         return UINavigationController(rootViewController: graphsViewController)
     }
     
-    private func createDataVC() -> UINavigationController {
-//        let discoverViewController = DiscoverAssembly.assemble(endpoint: .getTopHeadlines)
-        let dataViewController = DataViewController()
-        dataViewController.tabBarItem = UITabBarItem(title: "Data", image: UIImage(systemName: "scale.3d"), selectedImage:  UIImage(systemName: "scale.3d"))
-        return UINavigationController(rootViewController: dataViewController)
+    private func createExpenseVC() -> UINavigationController {
+        let expenseViewController = ExpenseAssembly.assemble()
+        expenseViewController.tabBarItem = UITabBarItem(title: "Expense", image: UIImage(systemName: "scale.3d"), selectedImage:  UIImage(systemName: "scale.3d"))
+        return UINavigationController(rootViewController: expenseViewController)
     }
-    
+        
     private func createTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
         UITabBar.appearance().tintColor = UIColor.blue
         //add more tabs here
-        tabBar.viewControllers = [createDataVC(), createGraphsVC()]
+        tabBar.viewControllers = [createExpenseVC(), createGraphsVC()]
         return tabBar
     }
 }

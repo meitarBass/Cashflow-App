@@ -17,7 +17,6 @@ protocol RealmManagerProtocol: class {
 
 class RealmManager {
     private let realm = try! Realm()
-    
     init() {}
 }
 

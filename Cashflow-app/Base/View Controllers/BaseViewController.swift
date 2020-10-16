@@ -27,34 +27,28 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpUI()
+        self.makeConstraints()
     }
     
     func setUpUI() {
         
         //TODO: - change colour
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = #colorLiteral(red: 0.1647058824, green: 0.2196078431, blue: 0.3882352941, alpha: 1)
         
         //TODO: -  fix me
         self.navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.font: UIFont(name: "AmericanTypewriter", size: 24),
             NSAttributedString.Key.foregroundColor: UIColor.black
         ]
-        
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [
-            NSAttributedString.Key.font: UIFont(name: "AmericanTypewriter", size: 16),
-            NSAttributedString.Key.foregroundColor: UIColor.black
-        ]
     
         self.navigationController?.navigationBar.tintColor = .gray
-        
-//        self.navigationController?.navigationBar.prefersLargeTitles = true
-        
-        self.addSubViews()
+    
+        self.addSubviews()
         self.makeConstraints()
     }
     
     
-    func addSubViews() {
+    func addSubviews() {
         self.view.addSubview(indicatorBlurView)
         self.indicatorBlurView.contentView.addSubview(indicator)
     }
