@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 // View to Presenter
 protocol ExpensePresenterProtocol: class {
@@ -17,9 +18,12 @@ protocol ExpensePresenterProtocol: class {
 
 // Interactor to Presenter
 protocol ExpensePresenterInput: class {
-    func gotDataSuccess(data: [DataModel])
+    func gotDataSuccess(data: [DataModel],
+                        expenses: ([categories : Int]?, Int),
+                        savings: ([categories : Int]?, Int))
 }
 
-//
+// Manager to Presenter
 protocol ExpensesTableViewManagerDelegate: class {
+    func deleteRowData(row: Int)
 }

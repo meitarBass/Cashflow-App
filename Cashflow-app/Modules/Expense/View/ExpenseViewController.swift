@@ -26,15 +26,36 @@ class ExpenseViewController: BaseViewController {
         return barButton
     }()
     
-    private lazy var lineGraph: LineGraph = {
-        let lineGraph = LineGraph(frame: .zero)
-        return lineGraph
-    }()
-    
-    private lazy var chartPie: ChartPie = {
+    private lazy var expenseChartPie: ChartPie = {
         let pie = ChartPie(frame: .zero, pulsatingColor: #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1))
         return pie
     }()
+    
+    private lazy var savingChartPie: ChartPie = {
+        let pie = ChartPie(frame: .zero, pulsatingColor: #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1))
+        return pie
+    }()
+    
+    private lazy var pieStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [expenseChartPie, savingChartPie])
+        stack.distribution = .fillEqually
+        stack.spacing = 8.0
+        stack.axis = .horizontal
+        return stack
+    }()
+    
+    private lazy var viewStack: UIStackView = {
+       let stack = UIStackView(arrangedSubviews: [pieStack, dataTable])
+        stack.distribution = .fillEqually
+        stack.spacing = 16
+        stack.axis = .vertical
+        return stack
+    }()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refresh()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,30 +73,38 @@ class ExpenseViewController: BaseViewController {
     }
     
     override func addSubviews() {
-        self.view.addSubview(dataTable)
-        self.view.addSubview(lineGraph)
-        self.view.addSubview(chartPie)
+//        self.view.addSubview(dataTable)
+//        self.view.addSubview(pieStack)
+        self.view.addSubview(viewStack)
     }
     
     override func makeConstraints() {
         super.makeConstraints()
-        dataTable.snp.makeConstraints { (make) in
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(250)
+        
+        viewStack.snp.makeConstraints { (make) in
+            make.bottom.leading.trailing.equalToSuperview()
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.topMargin)
         }
         
-        chartPie.snp.makeConstraints { (make) in
-            make.bottom.equalTo(lineGraph.snp.topMargin).offset(-48)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(150)
-        }
+//        dataTable.snp.makeConstraints { (make) in
+//            make.bottom.leading.trailing.equalToSuperview()
+//            make.height.equalTo(200)
+//        }
+//
+//        pieStack.snp.makeConstraints { (make) in
+//            make.bottom.equalTo(dataTable.snp.topMargin).offset(-36)
+//            make.leading.trailing.equalToSuperview().inset(16)
+//            make.height.equalTo(140)
+//        }
         
-        lineGraph.snp.makeConstraints { (make) in
-            make.bottom.equalTo(dataTable.snp.topMargin).offset(-48)
-            make.leading.trailing.equalToSuperview().inset(32)
-            make.height.equalTo(150)
+        expenseChartPie.snp.makeConstraints { (make) in
+            make.width.equalTo(140)
         }
+
+        savingChartPie.snp.makeConstraints { (make) in
+            make.width.equalTo(140)
+        }
+
     }
 }
 
@@ -86,24 +115,25 @@ extension ExpenseViewController {
 }
 
 extension ExpenseViewController: ExpenseViewInput {
-    func getData(data: [DataModel]?) {
-        guard let data = data else { return }
-        self.data = data
-        
-        var total = 0
-        var expenses: [categories : CGFloat] = [categories : CGFloat]()
-        for data in data {
-            let newAmount = Int(data.amount!.replacingOccurrences(of: "$", with: ""))!
-            guard let category = categories(rawValue: data.category!) else { return }
-            
-            if expenses.keys.contains(category) {
-                expenses[category]! += CGFloat(newAmount)
-            } else {
-                expenses[category] = CGFloat(newAmount)
+    func gotDataSuccess(expenses: ([categories : Int]?, Int),
+                        savings: ([categories : Int]?, Int)) {
+        guard let expensesDict = expenses.0, let savingsDict = savings.0 else { return }
+        expenseChartPie.setupUI(expenses: expensesDict, total: CGFloat(expenses.1))
+        savingChartPie.setupUI(expenses: savingsDict, total: CGFloat(savings.1))
+    }
+    
+    func refresh() {
+        if let expenseLayers = expenseChartPie.layer.sublayers {
+            for layer in expenseLayers {
+                layer.removeFromSuperlayer()
             }
-            total += newAmount
         }
         
-        chartPie.setupUI(expenses: expenses, total: CGFloat(total))
+        if let savingLayers = savingChartPie.layer.sublayers {
+            for layer in savingLayers {
+                layer.removeFromSuperlayer()
+            }
+        }
+        presenter?.viewDidLoad()
     }
 }

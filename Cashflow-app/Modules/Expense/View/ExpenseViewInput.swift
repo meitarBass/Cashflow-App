@@ -7,6 +7,7 @@
 
 // Presenter to View
 protocol ExpenseViewInput: class {
-    func getData(data: [DataModel]?)
+    func gotDataSuccess(expenses: ([categories : Int]?, Int),
+                        savings: ([categories : Int]?, Int))
+    func refresh()
 }
-

@@ -49,7 +49,7 @@ class AddDataViewController: BaseViewController {
     private lazy var addButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.addTarget(self, action: #selector(addClicked), for: .touchUpInside)
-        button.setTitle("Add new expense", for: .normal)
+        button.setTitle("Add new transaction", for: .normal)
         button.titleLabel?.font = .bold20
         button.layer.cornerRadius = 8.0
         button.backgroundColor = .buttonColor
@@ -60,8 +60,8 @@ class AddDataViewController: BaseViewController {
         let picker = UIPickerView(frame: .zero)
         picker.delegate = self
         picker.dataSource = self
-        #warning("change background color")
-        picker.backgroundColor = .systemPink
+        picker.backgroundColor = .buttonColor
+        picker.setValue(UIColor.dataViewLabels, forKey: "textColor")
         return picker
     }()
     
@@ -70,8 +70,8 @@ class AddDataViewController: BaseViewController {
         picker.maximumDate = .init()
         picker.datePickerMode = .date
         picker.preferredDatePickerStyle = .wheels
-        #warning("change background color")
-        picker.backgroundColor = .systemPink
+        picker.setValue(UIColor.dataViewLabels, forKey: "textColor")
+        picker.backgroundColor = .buttonColor
         return picker
     }()
     
@@ -88,19 +88,26 @@ class AddDataViewController: BaseViewController {
         return toolBar
     }()
     
+    private lazy var transacationType: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl(items: ["Expense", "Saving"])
+        segmentedControl.selectedSegmentIndex = 0
+        
+        // Add target action method
+        segmentedControl.addTarget(self, action: #selector(transactionTypeChanged), for: .valueChanged)
+        
+        return segmentedControl
+    }()
+    
+    var flowType: FlowType = .expense
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupUI(color: #colorLiteral(red: 0.1647058824, green: 0.2196078431, blue: 0.3882352941, alpha: 1), flowType: .expense)
+        self.setupUI(color: #colorLiteral(red: 0.1647058824, green: 0.2196078431, blue: 0.3882352941, alpha: 1))
     }
 
-    private func setupUI(color: UIColor, flowType: FlowType) {
+    private func setupUI(color: UIColor) {
         view.backgroundColor = color
-        switch flowType {
-        case .expense:
-            self.title = "New expense"
-        case .income:
-            self.title = "New income"
-        }
+        self.title = "New Transacation"
         
         addSubviews()
         makeConstraints()
@@ -109,11 +116,12 @@ class AddDataViewController: BaseViewController {
     override func addSubviews() {
         self.view.addSubview(dataStackView)
         self.view.addSubview(addButton)
+        self.view.addSubview(transacationType)
     }
     
     override func makeConstraints() {
         dataStackView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.topMargin).inset(16)
+            make.top.equalTo(transacationType.snp.bottomMargin).inset(-16)
             make.leading.trailing.equalToSuperview().inset(16)
         }
         
@@ -121,6 +129,11 @@ class AddDataViewController: BaseViewController {
             make.leading.trailing.equalToSuperview().inset(48)
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottomMargin).inset(36)
             make.height.equalTo(36)
+        }
+        
+        transacationType.snp.makeConstraints { (make) in
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.topMargin).inset(16)
+            make.leading.trailing.equalToSuperview().inset(16)
         }
     }
     
@@ -156,8 +169,15 @@ extension AddDataViewController {
 // MARK: Buttons
 extension AddDataViewController {
     @objc private func addClicked() {
+        var amount = amountView.getValue()
+        switch flowType {
+        case .expense:
+            amount = "-\(amount)"
+        case .income:
+            break;
+        }
         presenter?.addNewData(data: DataModel(date: dateView.getValue(),
-                                              amount: amountView.getValue(),
+                                              amount: amount,
                                               category: categoryView.getValue()))
     }
     
@@ -184,6 +204,18 @@ extension AddDataViewController {
         }
         toolBar.removeFromSuperview()
     }
+    
+    @objc private func transactionTypeChanged() {
+        switch transacationType.selectedSegmentIndex {
+        case 0:
+            flowType = .expense
+        case 1:
+            flowType = .income
+        default:
+            break;
+        }
+        categoryPicker.reloadAllComponents()
+    }
 }
 
 // MARK: UICategoryPickerView
@@ -195,15 +227,33 @@ extension AddDataViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Categories.categoriesArr.count
+        switch flowType {
+        case .expense:
+            return Categories.expenseCategories.count
+        case .income:
+            return Categories.savingCategories.count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return Categories.categoriesArr[row].rawValue
+        
+        switch flowType {
+        case .expense:
+            return Categories.expenseCategories[row].rawValue
+        case .income:
+            return Categories.savingCategories[row].rawValue
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.categoryView.changeMessage(withText: Categories.categoriesArr[row].rawValue)
+        switch flowType {
+        case .expense:
+            self.categoryView.changeMessage(withText:
+                                                Categories.expenseCategories[row].rawValue)
+        case .income:
+            self.categoryView.changeMessage(withText:
+                                                Categories.savingCategories[row].rawValue)
+        }
     }
     
     func setCategoryPickerUI() {
@@ -267,5 +317,14 @@ extension AddDataViewController {
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(picker.snp.topMargin)
         }
+    }
+}
+
+extension AddDataViewController: AddDataViewInput {
+    func dataAddedSuccessfuly() {
+        let alert = UIAlertController(title: "New transaction was added", message: "", preferredStyle: .alert)
+        let doneAction = UIAlertAction(title: "Done", style: .default, handler: nil)
+        alert.addAction(doneAction)
+        present(alert, animated: true, completion: nil)
     }
 }

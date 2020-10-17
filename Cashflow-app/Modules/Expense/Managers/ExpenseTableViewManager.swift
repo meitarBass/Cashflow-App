@@ -32,6 +32,7 @@ extension ExpenseTableViewManager: ExpenseTableViewManagerProtocol {
         self.tableView = tableView
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
+        self.tableView?.backgroundColor = .buttonColor
         self.tableView?.register(DataTableViewCell.self, forCellReuseIdentifier: DataTableViewCell.identifier)
     }
     
@@ -63,9 +64,20 @@ extension ExpenseTableViewManager: UITableViewDataSource {
         }
         let cellViewModel = DataCellViewModel(data: cashFlow?[indexPath.row])
         cell.viewModel = cellViewModel
-        cell.backgroundColor = .clear
-        cell.addGradientBackground()
+        cell.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard let transaction = self.cashFlow else { return }
+        let data = DataModelRealm()
+        data.amount = transaction[indexPath.row].amount
+        data.category = transaction[indexPath.row].category
+        data.date = transaction[indexPath.row].date
+        
+        if editingStyle == .delete {
+            delegate?.deleteRowData(row: indexPath.row)
+        }
     }
 }
 

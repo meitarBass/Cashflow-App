@@ -84,16 +84,4 @@ class DataTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview().inset(8)
         }
     }
-    
-    func addGradientBackground() {
-        clipsToBounds = true
-        let gradientLayer = CAGradientLayer()
-        guard let category = categories(rawValue: viewModel?.data?.category ?? "") else { return }
-        let colors = category.getColors(category: category)
-        gradientLayer.colors = [colors.0.cgColor, colors.1.cgColor]
-        gradientLayer.frame = self.bounds
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        self.layer.insertSublayer(gradientLayer, at: 0)
-    }
 }

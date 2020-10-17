@@ -10,7 +10,7 @@ import UIKit
 class AddDataAssembly {
     static func assemble() -> UIViewController {
         let view = AddDataViewController()
-        let presenter = addDataPresenter()
+        let presenter = AddDataPresenter()
         let interactor = AddDataInteractor()
         
         view.presenter = presenter

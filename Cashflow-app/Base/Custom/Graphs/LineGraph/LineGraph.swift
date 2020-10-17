@@ -21,9 +21,12 @@ extension LineGraph {
 
 class LineGraph: UIView {
     
-    var graphPoints = [4, 3, 2, 5, 6]
-    var startColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
-    var endColor = #colorLiteral(red: 0.9274237752, green: 0.8423518538, blue: 0.6862384677, alpha: 1)
+    private var graphPoints = [4, 3, 2, 5, 6]
+    
+    private var expenses: [categories : CGFloat]?
+    
+    private var startColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
+    private var endColor = #colorLiteral(red: 0.9274237752, green: 0.8423518538, blue: 0.6862384677, alpha: 1)
     
     let appearance = Appearance()
     

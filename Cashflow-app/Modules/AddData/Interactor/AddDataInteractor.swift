@@ -10,7 +10,7 @@ import Foundation
 class AddDataInteractor: AddDataInteractorInput {
     
     var realm = RealmManager()
-    var presenter: addDataPresenter?
+    var presenter: AddDataPresenter?
     
     func saveData(data: DataModel) {
         let modeledData = fixDataFormat(data: data)

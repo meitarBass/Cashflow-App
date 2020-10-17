@@ -8,7 +8,9 @@
 import UIKit
 
 struct Categories {
-    static let categoriesArr: [categories] = [.housing, .saving, .food, .transportation, .insurance, .debt, .entertainment, .medical, .giving, .shopping]
+    static let expenseCategories: [categories] = [.housing, .saving, .food, .transportation, .insurance, .debt, .entertainment, .medical, .giving, .shopping]
+    
+    static let savingCategories: [categories] = [.salary, .sale, .other]
 }
 
 enum categories: String {
@@ -22,6 +24,10 @@ enum categories: String {
     case medical = "Medical"
     case giving = "Giving"
     case shopping = "Shopping"
+    
+    case salary = "Salary"
+    case sale = "Sale"
+    case other = "Other"
     
     func getColors(category: categories) -> (UIColor, UIColor) {
         switch category {
@@ -45,6 +51,13 @@ enum categories: String {
             return UIColor.gradientGiving
         case .shopping:
             return UIColor.gradientShopping
+            
+        case .salary:
+            return UIColor.gradientSalary
+        case .sale:
+            return UIColor.gradientSale
+        case .other:
+            return UIColor.gradientOther
         }
     }
 }

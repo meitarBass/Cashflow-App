@@ -29,7 +29,7 @@ struct CirclePath {
     
     mutating func createPath(totalVal: CGFloat) {
         let endAngle = startAngle! + 2 * CGFloat.pi * (self.data / totalVal)
-        let path = UIBezierPath(arcCenter: .zero, radius: 70, startAngle: startAngle!, endAngle: endAngle, clockwise: true)
+        let path = UIBezierPath(arcCenter: .zero, radius: 65, startAngle: startAngle!, endAngle: endAngle, clockwise: true)
         self.path = path.cgPath
     }
 }
@@ -43,9 +43,9 @@ class ChartPie: UIView {
     
     private var circleLayers: [CAShapeLayer] = [CAShapeLayer]()
     
-    private var expenses: [categories : CGFloat]?
+    private var expenses: [categories : Int]?
 
-    private let circularPath = UIBezierPath(arcCenter: .zero, radius: 70, startAngle: 0,
+    private let circularPath = UIBezierPath(arcCenter: .zero, radius: 65, startAngle: 0,
                                     endAngle: 2 * CGFloat.pi, clockwise: true)
     
     init(frame: CGRect, pulsatingColor: UIColor) {
@@ -56,7 +56,7 @@ class ChartPie: UIView {
         setupNotificiationObservers()
     }
     
-    func setupUI(expenses: [categories : CGFloat], total: CGFloat) {
+    func setupUI(expenses: [categories : Int], total: CGFloat) {
         self.total = total
         self.expenses = expenses
     }
@@ -74,10 +74,10 @@ class ChartPie: UIView {
         guard let expenses = self.expenses, let total = self.total else { return }
         for (category, amount) in expenses {
             var path = CirclePath(fromColor: .white, toColor: .white,
-                                  data: amount, category: category)
+                                  data: CGFloat(amount), category: category)
             path.startAngle = endAngle
             path.createPath(totalVal: total)
-            endAngle = path.startAngle! + 2 * CGFloat.pi * (amount / total)
+            endAngle = path.startAngle! + 2 * CGFloat.pi * (CGFloat(amount) / total)
                         
             let layer = createCircleShapeLayer(path: path.path!, strokeColor: .white, fillColor: .clear, center: center)
             
@@ -139,7 +139,7 @@ class ChartPie: UIView {
     
     private func createPath(pathVal: CGFloat, totalVal: CGFloat, startAngle: CGFloat) -> CGPath {
         let endAngle = 2 * CGFloat.pi * (pathVal / totalVal)
-        let path = UIBezierPath(arcCenter: .zero, radius: 70, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        let path = UIBezierPath(arcCenter: .zero, radius: 65, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         return path.cgPath
     }
     

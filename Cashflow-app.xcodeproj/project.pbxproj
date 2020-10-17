@@ -17,7 +17,7 @@
 		A94667E42532B32A0066A317 /* AppInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94667E32532B32A0066A317 /* AppInteractor.swift */; };
 		A94667E82532B3820066A317 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94667E72532B3820066A317 /* AppCoordinator.swift */; };
 		A970BFF92538DD7600A994AB /* AddDataAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A970BFF82538DD7600A994AB /* AddDataAssembly.swift */; };
-		A970BFFD2538DE4000A994AB /* addDataPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A970BFFC2538DE4000A994AB /* addDataPresenter.swift */; };
+		A970BFFD2538DE4000A994AB /* AddDataPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A970BFFC2538DE4000A994AB /* AddDataPresenter.swift */; };
 		A970C0002538DE4A00A994AB /* addDataPresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A970BFFF2538DE4A00A994AB /* addDataPresenterProtocols.swift */; };
 		A970C0042538DF0E00A994AB /* AddDataInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A970C0032538DF0E00A994AB /* AddDataInteractorInput.swift */; };
 		A970C0072538DF5E00A994AB /* AddDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A970C0062538DF5E00A994AB /* AddDataInteractor.swift */; };
@@ -66,7 +66,7 @@
 		A94667E32532B32A0066A317 /* AppInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInteractor.swift; sourceTree = "<group>"; };
 		A94667E72532B3820066A317 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		A970BFF82538DD7600A994AB /* AddDataAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataAssembly.swift; sourceTree = "<group>"; };
-		A970BFFC2538DE4000A994AB /* addDataPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addDataPresenter.swift; sourceTree = "<group>"; };
+		A970BFFC2538DE4000A994AB /* AddDataPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataPresenter.swift; sourceTree = "<group>"; };
 		A970BFFF2538DE4A00A994AB /* addDataPresenterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addDataPresenterProtocols.swift; sourceTree = "<group>"; };
 		A970C0032538DF0E00A994AB /* AddDataInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataInteractorInput.swift; sourceTree = "<group>"; };
 		A970C0062538DF5E00A994AB /* AddDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataInteractor.swift; sourceTree = "<group>"; };
@@ -449,7 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				A970BFFF2538DE4A00A994AB /* addDataPresenterProtocols.swift */,
-				A970BFFC2538DE4000A994AB /* addDataPresenter.swift */,
+				A970BFFC2538DE4000A994AB /* AddDataPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -608,7 +608,7 @@
 				A9D8FC8425337352001607FE /* ChartPie.swift in Sources */,
 				A9F4C2D4253799BA006C66EF /* GraphsAssembly.swift in Sources */,
 				A9F4C2E125379CDC006C66EF /* RealmManager.swift in Sources */,
-				A970BFFD2538DE4000A994AB /* addDataPresenter.swift in Sources */,
+				A970BFFD2538DE4000A994AB /* AddDataPresenter.swift in Sources */,
 				A970C0072538DF5E00A994AB /* AddDataInteractor.swift in Sources */,
 				A9E287522538CBD7004447CC /* DataTableViewCell.swift in Sources */,
 				A9F4C2C2253795D7006C66EF /* GraphsPresenterProtocols.swift in Sources */,

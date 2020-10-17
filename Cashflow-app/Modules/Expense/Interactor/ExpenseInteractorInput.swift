@@ -9,4 +9,5 @@ import Foundation
 
 protocol ExpenseInteractorInput {
     func loadData()
+    func deleteData(row: Int)
 }

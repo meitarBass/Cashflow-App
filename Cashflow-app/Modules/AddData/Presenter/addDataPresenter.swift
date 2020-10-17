@@ -7,14 +7,14 @@
 
 import Foundation
 
-class addDataPresenter {
+class AddDataPresenter {
     weak var view: AddDataViewController?
     
     var interactor: AddDataInteractorInput?
     var data: DataModel?
 }
 
-extension addDataPresenter: AddDataPresenterProtocol {
+extension AddDataPresenter: AddDataPresenterProtocol {
     func viewDidLoad() {}
     
     func addNewData(data: DataModel) {
@@ -22,8 +22,8 @@ extension addDataPresenter: AddDataPresenterProtocol {
     }
 }
 
-extension addDataPresenter: AddDataPresenterInput {
+extension AddDataPresenter: AddDataPresenterInput {
     func saveDataSuccessfuly() {
-        print("Data Added")
+        view?.dataAddedSuccessfuly()
     }
 }
