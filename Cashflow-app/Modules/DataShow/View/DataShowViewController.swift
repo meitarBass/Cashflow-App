@@ -100,15 +100,15 @@ extension DataShowViewController {
 extension DataShowViewController: DataShowViewInput {
     func gotDataSuccess(expenses: ([categories : Int]?, Int),
                         savings: ([categories : Int]?, Int)) {
+        print(self.view.frame.width)
         guard let expensesDict = expenses.0, let savingsDict = savings.0 else { return }
-        expenseChartPie.setupUI(expenses: expensesDict, total: CGFloat(expenses.1), radius: 65)
-        expenseChartPie.setNeedsDisplay()
-        savingChartPie.setupUI(expenses: savingsDict, total: CGFloat(savings.1), radius: 65)
+        expenseChartPie.setupUI(expenses: expensesDict, total: CGFloat(expenses.1), radius: self.view.frame.width / 5 - 10)
+        savingChartPie.setupUI(expenses: savingsDict, total: CGFloat(savings.1), radius: self.view.frame.width / 5 - 10)
         savingChartPie.setNeedsDisplay()
         
         sumChartPie.setupUIforExpensesSavings(expensesTotal: expenses.1,
                                               savingsTotal: savings.1,
-                                              radius: 100)
+                                              radius: self.view.frame.width / 4 - 15)
         sumChartPie.setNeedsDisplay()
     }
     

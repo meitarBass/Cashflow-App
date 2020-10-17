@@ -168,23 +168,25 @@ class ChartPie: UIView {
         
         if expenseSavingAbs > 1000000000000 {
             layer.string = "error"
-        } else if expenseSavingAbs > 10000000000 {
-            fontSize = 12.0
-        } else if expenseSavingAbs > 1000000000 {
-            fontSize = 14.0
-        } else if expenseSavingAbs > 100000000 {
-            fontSize = 16.0
-        } else if expenseSavingAbs > 10000000 {
-            fontSize = 20.0
-        } else if expenseSavingAbs > 1000000 {
-            fontSize = 24.0
-        } else if expenseSavingAbs > 100000 {
-            fontSize = 28.0
-        } else if expenseSavingAbs > 10000 {
-            fontSize = 32.0
+        } else {
+            layer.string = "\(Int(expensesSavingsTotal ?? absTotal!))"
+            if expenseSavingAbs > 10000000000 {
+                fontSize = 10.0
+            } else if expenseSavingAbs > 1000000000 {
+                fontSize = 12.0
+            } else if expenseSavingAbs > 100000000 {
+                fontSize = 14.0
+            } else if expenseSavingAbs > 10000000 {
+                fontSize = 17.0
+            } else if expenseSavingAbs > 1000000 {
+                fontSize = 18.0
+            } else if expenseSavingAbs > 100000 {
+                fontSize = 24.0
+            } else if expenseSavingAbs > 10000 {
+                fontSize = 32.0
+            }
         }
         
-        layer.string = "\(Int(expensesSavingsTotal ?? absTotal!))"
         layer.backgroundColor = UIColor.clear.cgColor
         layer.foregroundColor = textColor.cgColor
         layer.font = UIFont(name: "AmericanTypewriter-Bold", size: fontSize)
