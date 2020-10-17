@@ -22,7 +22,7 @@
 		A970C0042538DF0E00A994AB /* AddDataInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A970C0032538DF0E00A994AB /* AddDataInteractorInput.swift */; };
 		A970C0072538DF5E00A994AB /* AddDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A970C0062538DF5E00A994AB /* AddDataInteractor.swift */; };
 		A970C00A2539923000A994AB /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A970C0092539923000A994AB /* Categories.swift */; };
-		A991A61E25383B0F00CB1491 /* ExpenseTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A991A61D25383B0F00CB1491 /* ExpenseTableViewManager.swift */; };
+		A991A61E25383B0F00CB1491 /* DataShowTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A991A61D25383B0F00CB1491 /* DataShowTableViewManager.swift */; };
 		A9D8FC8425337352001607FE /* ChartPie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D8FC8325337352001607FE /* ChartPie.swift */; };
 		A9D8FC8725337369001607FE /* BarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D8FC8625337369001607FE /* BarGraph.swift */; };
 		A9D8FC8A2533737C001607FE /* LineGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D8FC892533737C001607FE /* LineGraph.swift */; };
@@ -37,18 +37,18 @@
 		A9F4C2C925379665006C66EF /* GraphsInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2C825379665006C66EF /* GraphsInteractorInput.swift */; };
 		A9F4C2CC25379680006C66EF /* GraphsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2CB2537967F006C66EF /* GraphsInteractor.swift */; };
 		A9F4C2D4253799BA006C66EF /* GraphsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2D3253799BA006C66EF /* GraphsAssembly.swift */; };
-		A9F4C2D725379A16006C66EF /* ExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2D625379A16006C66EF /* ExpenseViewController.swift */; };
+		A9F4C2D725379A16006C66EF /* DataShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2D625379A16006C66EF /* DataShowViewController.swift */; };
 		A9F4C2E125379CDC006C66EF /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2E025379CDC006C66EF /* RealmManager.swift */; };
 		A9F4C2E925380A07006C66EF /* AddDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2E825380A07006C66EF /* AddDataViewController.swift */; };
 		A9F4C2ED25382A43006C66EF /* CustomDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2EC25382A43006C66EF /* CustomDataView.swift */; };
 		A9F4C2F025382F90006C66EF /* UIFonts+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2EF25382F90006C66EF /* UIFonts+Extensions.swift */; };
 		A9F4C2F325382FE9006C66EF /* UIColors+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2F225382FE9006C66EF /* UIColors+Extensions.swift */; };
 		A9F4C2F8253838AD006C66EF /* ExpenseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2F7253838AD006C66EF /* ExpenseRouter.swift */; };
-		A9F4C2FB253838B9006C66EF /* ExpenseViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2FA253838B9006C66EF /* ExpenseViewInput.swift */; };
-		A9F4C2FE253838CF006C66EF /* ExpensePresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2FD253838CF006C66EF /* ExpensePresenterProtocols.swift */; };
-		A9F4C301253838D8006C66EF /* ExpensePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C300253838D8006C66EF /* ExpensePresenter.swift */; };
-		A9F4C304253838E4006C66EF /* ExpenseInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C303253838E4006C66EF /* ExpenseInteractorInput.swift */; };
-		A9F4C307253838EC006C66EF /* ExpenseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C306253838EC006C66EF /* ExpenseInteractor.swift */; };
+		A9F4C2FB253838B9006C66EF /* DataShowViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2FA253838B9006C66EF /* DataShowViewInput.swift */; };
+		A9F4C2FE253838CF006C66EF /* DataShowPresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C2FD253838CF006C66EF /* DataShowPresenterProtocols.swift */; };
+		A9F4C301253838D8006C66EF /* DataShowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C300253838D8006C66EF /* DataShowPresenter.swift */; };
+		A9F4C304253838E4006C66EF /* DataShowInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C303253838E4006C66EF /* DataShowInteractorInput.swift */; };
+		A9F4C307253838EC006C66EF /* DataShowInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C306253838EC006C66EF /* DataShowInteractor.swift */; };
 		A9F4C30A253838F7006C66EF /* ExpenseAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F4C309253838F7006C66EF /* ExpenseAssembly.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,7 +71,7 @@
 		A970C0032538DF0E00A994AB /* AddDataInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataInteractorInput.swift; sourceTree = "<group>"; };
 		A970C0062538DF5E00A994AB /* AddDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataInteractor.swift; sourceTree = "<group>"; };
 		A970C0092539923000A994AB /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
-		A991A61D25383B0F00CB1491 /* ExpenseTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewManager.swift; sourceTree = "<group>"; };
+		A991A61D25383B0F00CB1491 /* DataShowTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataShowTableViewManager.swift; sourceTree = "<group>"; };
 		A9D8FC8325337352001607FE /* ChartPie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPie.swift; sourceTree = "<group>"; };
 		A9D8FC8625337369001607FE /* BarGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraph.swift; sourceTree = "<group>"; };
 		A9D8FC892533737C001607FE /* LineGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraph.swift; sourceTree = "<group>"; };
@@ -86,18 +86,18 @@
 		A9F4C2C825379665006C66EF /* GraphsInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsInteractorInput.swift; sourceTree = "<group>"; };
 		A9F4C2CB2537967F006C66EF /* GraphsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsInteractor.swift; sourceTree = "<group>"; };
 		A9F4C2D3253799BA006C66EF /* GraphsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GraphsAssembly.swift; path = "Cashflow-app/Modules/Graphs/GraphsAssembly.swift"; sourceTree = SOURCE_ROOT; };
-		A9F4C2D625379A16006C66EF /* ExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseViewController.swift; sourceTree = "<group>"; };
+		A9F4C2D625379A16006C66EF /* DataShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataShowViewController.swift; sourceTree = "<group>"; };
 		A9F4C2E025379CDC006C66EF /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		A9F4C2E825380A07006C66EF /* AddDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataViewController.swift; sourceTree = "<group>"; };
 		A9F4C2EC25382A43006C66EF /* CustomDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDataView.swift; sourceTree = "<group>"; };
 		A9F4C2EF25382F90006C66EF /* UIFonts+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFonts+Extensions.swift"; sourceTree = "<group>"; };
 		A9F4C2F225382FE9006C66EF /* UIColors+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColors+Extensions.swift"; sourceTree = "<group>"; };
 		A9F4C2F7253838AD006C66EF /* ExpenseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseRouter.swift; sourceTree = "<group>"; };
-		A9F4C2FA253838B9006C66EF /* ExpenseViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseViewInput.swift; sourceTree = "<group>"; };
-		A9F4C2FD253838CF006C66EF /* ExpensePresenterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensePresenterProtocols.swift; sourceTree = "<group>"; };
-		A9F4C300253838D8006C66EF /* ExpensePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensePresenter.swift; sourceTree = "<group>"; };
-		A9F4C303253838E4006C66EF /* ExpenseInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseInteractorInput.swift; sourceTree = "<group>"; };
-		A9F4C306253838EC006C66EF /* ExpenseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseInteractor.swift; sourceTree = "<group>"; };
+		A9F4C2FA253838B9006C66EF /* DataShowViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataShowViewInput.swift; sourceTree = "<group>"; };
+		A9F4C2FD253838CF006C66EF /* DataShowPresenterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataShowPresenterProtocols.swift; sourceTree = "<group>"; };
+		A9F4C300253838D8006C66EF /* DataShowPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataShowPresenter.swift; sourceTree = "<group>"; };
+		A9F4C303253838E4006C66EF /* DataShowInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataShowInteractorInput.swift; sourceTree = "<group>"; };
+		A9F4C306253838EC006C66EF /* DataShowInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataShowInteractor.swift; sourceTree = "<group>"; };
 		A9F4C309253838F7006C66EF /* ExpenseAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseAssembly.swift; sourceTree = "<group>"; };
 		CB6BBFCDB07B920F531C6CDC /* Pods-Cashflow-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cashflow-app.release.xcconfig"; path = "Target Support Files/Pods-Cashflow-app/Pods-Cashflow-app.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,13 +126,13 @@
 			isa = PBXGroup;
 			children = (
 				A9E287612538DA23004447CC /* AddData */,
-				A928210A2532B49F001D365B /* Expense */,
+				A928210A2532B49F001D365B /* DataShow */,
 				A928210B2532B4AE001D365B /* Graphs */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		A928210A2532B49F001D365B /* Expense */ = {
+		A928210A2532B49F001D365B /* DataShow */ = {
 			isa = PBXGroup;
 			children = (
 				A928211B2532B77D001D365B /* View */,
@@ -142,7 +142,7 @@
 				A92821172532B766001D365B /* Router */,
 				A92821162532B75B001D365B /* Assembly */,
 			);
-			path = Expense;
+			path = DataShow;
 			sourceTree = "<group>";
 		};
 		A928210B2532B4AE001D365B /* Graphs */ = {
@@ -226,8 +226,8 @@
 		A92821182532B76A001D365B /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				A9F4C303253838E4006C66EF /* ExpenseInteractorInput.swift */,
-				A9F4C306253838EC006C66EF /* ExpenseInteractor.swift */,
+				A9F4C303253838E4006C66EF /* DataShowInteractorInput.swift */,
+				A9F4C306253838EC006C66EF /* DataShowInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -235,8 +235,8 @@
 		A92821192532B770001D365B /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				A9F4C2FD253838CF006C66EF /* ExpensePresenterProtocols.swift */,
-				A9F4C300253838D8006C66EF /* ExpensePresenter.swift */,
+				A9F4C2FD253838CF006C66EF /* DataShowPresenterProtocols.swift */,
+				A9F4C300253838D8006C66EF /* DataShowPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -244,7 +244,7 @@
 		A928211A2532B778001D365B /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				A991A61D25383B0F00CB1491 /* ExpenseTableViewManager.swift */,
+				A991A61D25383B0F00CB1491 /* DataShowTableViewManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -252,8 +252,8 @@
 		A928211B2532B77D001D365B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A9F4C2D625379A16006C66EF /* ExpenseViewController.swift */,
-				A9F4C2FA253838B9006C66EF /* ExpenseViewInput.swift */,
+				A9F4C2D625379A16006C66EF /* DataShowViewController.swift */,
+				A9F4C2FA253838B9006C66EF /* DataShowViewInput.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -604,7 +604,7 @@
 				A9F4C2CC25379680006C66EF /* GraphsInteractor.swift in Sources */,
 				A9F4C2C625379620006C66EF /* GraphsPresenter.swift in Sources */,
 				A9F4C2F8253838AD006C66EF /* ExpenseRouter.swift in Sources */,
-				A9F4C304253838E4006C66EF /* ExpenseInteractorInput.swift in Sources */,
+				A9F4C304253838E4006C66EF /* DataShowInteractorInput.swift in Sources */,
 				A9D8FC8425337352001607FE /* ChartPie.swift in Sources */,
 				A9F4C2D4253799BA006C66EF /* GraphsAssembly.swift in Sources */,
 				A9F4C2E125379CDC006C66EF /* RealmManager.swift in Sources */,
@@ -620,23 +620,23 @@
 				A970C00A2539923000A994AB /* Categories.swift in Sources */,
 				A94667E42532B32A0066A317 /* AppInteractor.swift in Sources */,
 				A9E2875A2538CE89004447CC /* UITableViewCell+Extensions.swift in Sources */,
-				A991A61E25383B0F00CB1491 /* ExpenseTableViewManager.swift in Sources */,
+				A991A61E25383B0F00CB1491 /* DataShowTableViewManager.swift in Sources */,
 				A970C0042538DF0E00A994AB /* AddDataInteractorInput.swift in Sources */,
-				A9F4C307253838EC006C66EF /* ExpenseInteractor.swift in Sources */,
+				A9F4C307253838EC006C66EF /* DataShowInteractor.swift in Sources */,
 				A9F4C2F325382FE9006C66EF /* UIColors+Extensions.swift in Sources */,
 				A9E2875E2538D834004447CC /* DataModelRealm.swift in Sources */,
 				A9D8FC8A2533737C001607FE /* LineGraph.swift in Sources */,
 				A9F4C2ED25382A43006C66EF /* CustomDataView.swift in Sources */,
 				A970C0002538DE4A00A994AB /* addDataPresenterProtocols.swift in Sources */,
-				A9F4C301253838D8006C66EF /* ExpensePresenter.swift in Sources */,
-				A9F4C2FE253838CF006C66EF /* ExpensePresenterProtocols.swift in Sources */,
-				A9F4C2D725379A16006C66EF /* ExpenseViewController.swift in Sources */,
+				A9F4C301253838D8006C66EF /* DataShowPresenter.swift in Sources */,
+				A9F4C2FE253838CF006C66EF /* DataShowPresenterProtocols.swift in Sources */,
+				A9F4C2D725379A16006C66EF /* DataShowViewController.swift in Sources */,
 				A9E287572538CCA2004447CC /* DataModel.swift in Sources */,
 				A9F4C2E925380A07006C66EF /* AddDataViewController.swift in Sources */,
 				A9F4C2F025382F90006C66EF /* UIFonts+Extensions.swift in Sources */,
 				A9F4C2C925379665006C66EF /* GraphsInteractorInput.swift in Sources */,
 				A928210E2532B4CF001D365B /* GraphsViewController.swift in Sources */,
-				A9F4C2FB253838B9006C66EF /* ExpenseViewInput.swift in Sources */,
+				A9F4C2FB253838B9006C66EF /* DataShowViewInput.swift in Sources */,
 				A92821202532B7F4001D365B /* BaseViewController.swift in Sources */,
 				A9F4C2BE253795B0006C66EF /* GraphsViewInput.swift in Sources */,
 				A94667CF2532B27E0066A317 /* SceneDelegate.swift in Sources */,

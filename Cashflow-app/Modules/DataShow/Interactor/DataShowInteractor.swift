@@ -8,9 +8,9 @@
 import Foundation
 import RealmSwift
 
-final class ExpenseInteractor: ExpenseInteractorInput {
+final class DataShowInteractor: DataShowInteractorInput {
 
-    weak var presenter: ExpensePresenterInput?
+    weak var presenter: DataShowPresenterInput?
     var realmManager: RealmManagerProtocol?
     var realmData: Results<DataModelRealm>?
     

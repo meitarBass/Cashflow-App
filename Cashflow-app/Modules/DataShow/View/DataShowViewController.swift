@@ -8,9 +8,9 @@
 import Foundation
 import SnapKit
 
-class ExpenseViewController: BaseViewController {
+class DataShowViewController: BaseViewController {
     
-    var presenter: ExpensePresenterProtocol?
+    var presenter: DataShowPresenterProtocol?
     
     var data: [DataModel]?
     
@@ -24,6 +24,11 @@ class ExpenseViewController: BaseViewController {
     private lazy var addButton: UIBarButtonItem = {
         let barButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewData))
         return barButton
+    }()
+    
+    private lazy var sumChartPie: ChartPie = {
+        let pie = ChartPie(frame: .zero, pulsatingColor: #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1))
+        return pie
     }()
     
     private lazy var expenseChartPie: ChartPie = {
@@ -45,7 +50,7 @@ class ExpenseViewController: BaseViewController {
     }()
     
     private lazy var viewStack: UIStackView = {
-       let stack = UIStackView(arrangedSubviews: [pieStack, dataTable])
+       let stack = UIStackView(arrangedSubviews: [sumChartPie, pieStack, dataTable])
         stack.distribution = .fillEqually
         stack.spacing = 16
         stack.axis = .vertical
@@ -65,7 +70,7 @@ class ExpenseViewController: BaseViewController {
     
     override func setUpUI() {
         super.setUpUI()
-        title = "My Expenses"
+        title = "My Transactions"
         self.addSubviews()
         self.makeConstraints()
         self.presenter?.tableViewManager?.setUpTableView(tableView: dataTable)
@@ -73,8 +78,6 @@ class ExpenseViewController: BaseViewController {
     }
     
     override func addSubviews() {
-//        self.view.addSubview(dataTable)
-//        self.view.addSubview(pieStack)
         self.view.addSubview(viewStack)
     }
     
@@ -85,41 +88,28 @@ class ExpenseViewController: BaseViewController {
             make.bottom.leading.trailing.equalToSuperview()
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.topMargin)
         }
-        
-//        dataTable.snp.makeConstraints { (make) in
-//            make.bottom.leading.trailing.equalToSuperview()
-//            make.height.equalTo(200)
-//        }
-//
-//        pieStack.snp.makeConstraints { (make) in
-//            make.bottom.equalTo(dataTable.snp.topMargin).offset(-36)
-//            make.leading.trailing.equalToSuperview().inset(16)
-//            make.height.equalTo(140)
-//        }
-        
-        expenseChartPie.snp.makeConstraints { (make) in
-            make.width.equalTo(140)
-        }
-
-        savingChartPie.snp.makeConstraints { (make) in
-            make.width.equalTo(140)
-        }
-
     }
 }
 
-extension ExpenseViewController {
+extension DataShowViewController {
     @objc private func addNewData() {
         self.presenter?.addNewData()
     }
 }
 
-extension ExpenseViewController: ExpenseViewInput {
+extension DataShowViewController: DataShowViewInput {
     func gotDataSuccess(expenses: ([categories : Int]?, Int),
                         savings: ([categories : Int]?, Int)) {
         guard let expensesDict = expenses.0, let savingsDict = savings.0 else { return }
-        expenseChartPie.setupUI(expenses: expensesDict, total: CGFloat(expenses.1))
-        savingChartPie.setupUI(expenses: savingsDict, total: CGFloat(savings.1))
+        expenseChartPie.setupUI(expenses: expensesDict, total: CGFloat(expenses.1), radius: 65)
+        expenseChartPie.setNeedsDisplay()
+        savingChartPie.setupUI(expenses: savingsDict, total: CGFloat(savings.1), radius: 65)
+        savingChartPie.setNeedsDisplay()
+        
+        sumChartPie.setupUIforExpensesSavings(expensesTotal: expenses.1,
+                                              savingsTotal: savings.1,
+                                              radius: 100)
+        sumChartPie.setNeedsDisplay()
     }
     
     func refresh() {
@@ -134,6 +124,13 @@ extension ExpenseViewController: ExpenseViewInput {
                 layer.removeFromSuperlayer()
             }
         }
+        
+        if let layers = sumChartPie.layer.sublayers {
+            for layer in layers {
+                layer.removeFromSuperlayer()
+            }
+        }
+        
         presenter?.viewDidLoad()
     }
 }

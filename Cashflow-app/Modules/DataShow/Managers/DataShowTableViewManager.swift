@@ -11,22 +11,22 @@ struct Appearance {
     let rowHeight: CGFloat = 72.0
 }
 
-protocol ExpenseTableViewManagerProtocol {
+protocol DataShowTableViewManagerProtocol {
     func setUpTableView(tableView: UITableView)
     func setUpCells(data: [DataModel])
 }
 
-class ExpenseTableViewManager: NSObject {
+class DataShowTableViewManager: NSObject {
 
     weak var tableView: UITableView?
-    weak var delegate: ExpensesTableViewManagerDelegate?
+    weak var delegate: DataShowTableViewManagerDelegate?
     
     var cashFlow: [DataModel]?
     
     let appearance = Appearance()
 }
 
-extension ExpenseTableViewManager: ExpenseTableViewManagerProtocol {
+extension DataShowTableViewManager: DataShowTableViewManagerProtocol {
     
     func setUpTableView(tableView: UITableView) {
         self.tableView = tableView
@@ -42,7 +42,7 @@ extension ExpenseTableViewManager: ExpenseTableViewManagerProtocol {
     }
 }
 
-extension ExpenseTableViewManager: UITableViewDelegate {
+extension DataShowTableViewManager: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return appearance.rowHeight
@@ -53,7 +53,7 @@ extension ExpenseTableViewManager: UITableViewDelegate {
     }
 }
 
-extension ExpenseTableViewManager: UITableViewDataSource {
+extension DataShowTableViewManager: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cashFlow?.count ?? 0
     }

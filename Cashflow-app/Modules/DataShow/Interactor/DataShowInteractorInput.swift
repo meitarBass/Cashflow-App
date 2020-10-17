@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ExpenseInteractorInput {
+protocol DataShowInteractorInput {
     func loadData()
     func deleteData(row: Int)
 }

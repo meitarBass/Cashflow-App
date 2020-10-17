@@ -29,6 +29,9 @@ enum categories: String {
     case sale = "Sale"
     case other = "Other"
     
+    case expenses = "expenses"
+    case savingsCategory = "savings"
+    
     func getColors(category: categories) -> (UIColor, UIColor) {
         switch category {
         case .housing:
@@ -58,6 +61,12 @@ enum categories: String {
             return UIColor.gradientSale
         case .other:
             return UIColor.gradientOther
+            
+            
+        case .expenses:
+            return UIColor.gradientExpenses
+        case .savingsCategory:
+            return UIColor.gradientSavingsCategory
         }
     }
 }

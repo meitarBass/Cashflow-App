@@ -27,9 +27,9 @@ struct CirclePath {
         self.category = category
     }
     
-    mutating func createPath(totalVal: CGFloat) {
+    mutating func createPath(totalVal: CGFloat, radius: CGFloat?) {
         let endAngle = startAngle! + 2 * CGFloat.pi * (self.data / totalVal)
-        let path = UIBezierPath(arcCenter: .zero, radius: 65, startAngle: startAngle!, endAngle: endAngle, clockwise: true)
+        let path = UIBezierPath(arcCenter: .zero, radius: radius ?? 65, startAngle: startAngle!, endAngle: endAngle, clockwise: true)
         self.path = path.cgPath
     }
 }
@@ -39,14 +39,12 @@ class ChartPie: UIView {
     private var pulsatingColor: UIColor?
     private var pulsatingLayer: CAShapeLayer?
     
-    private var total: CGFloat?
-    
     private var circleLayers: [CAShapeLayer] = [CAShapeLayer]()
     
     private var expenses: [categories : Int]?
-
-    private let circularPath = UIBezierPath(arcCenter: .zero, radius: 65, startAngle: 0,
-                                    endAngle: 2 * CGFloat.pi, clockwise: true)
+    private var radius: CGFloat?
+    private var absTotal: CGFloat?
+    private var expensesSavingsTotal: CGFloat?
     
     init(frame: CGRect, pulsatingColor: UIColor) {
         super.init(frame: frame)
@@ -56,9 +54,19 @@ class ChartPie: UIView {
         setupNotificiationObservers()
     }
     
-    func setupUI(expenses: [categories : Int], total: CGFloat) {
-        self.total = total
+    func setupUI(expenses: [categories : Int], total: CGFloat, radius: CGFloat) {
+        self.absTotal = total
         self.expenses = expenses
+        self.radius = radius
+    }
+    
+    func setupUIforExpensesSavings(expensesTotal: Int, savingsTotal: Int,
+                                   radius: CGFloat) {
+        self.expenses = [.expenses : abs(expensesTotal),
+                         .savingsCategory: savingsTotal]
+        self.absTotal = CGFloat(abs(expensesTotal) + savingsTotal)
+        self.expensesSavingsTotal = CGFloat(expensesTotal + savingsTotal)
+        self.radius = radius
     }
     
     required init?(coder: NSCoder) {
@@ -71,12 +79,12 @@ class ChartPie: UIView {
         
         var endAngle: CGFloat = CGFloat(0)
     
-        guard let expenses = self.expenses, let total = self.total else { return }
+        guard let expenses = self.expenses, let total = self.absTotal else { return }
         for (category, amount) in expenses {
             var path = CirclePath(fromColor: .white, toColor: .white,
                                   data: CGFloat(amount), category: category)
             path.startAngle = endAngle
-            path.createPath(totalVal: total)
+            path.createPath(totalVal: total, radius: radius)
             endAngle = path.startAngle! + 2 * CGFloat.pi * (CGFloat(amount) / total)
                         
             let layer = createCircleShapeLayer(path: path.path!, strokeColor: .white, fillColor: .clear, center: center)
@@ -89,6 +97,10 @@ class ChartPie: UIView {
     private func createAdditionalLayers(center: CGPoint) {
         guard let pulsatingColor = self.pulsatingColor else { return }
         // Create pulsating layer
+        
+        let circularPath = UIBezierPath(arcCenter: .zero, radius: radius ?? 65, startAngle: 0,
+                                        endAngle: 2 * CGFloat.pi, clockwise: true)
+        
         pulsatingLayer = createCircleShapeLayer(path: circularPath.cgPath,
                                                strokeColor: pulsatingColor,
                                                fillColor: .clear,
@@ -139,7 +151,7 @@ class ChartPie: UIView {
     
     private func createPath(pathVal: CGFloat, totalVal: CGFloat, startAngle: CGFloat) -> CGPath {
         let endAngle = 2 * CGFloat.pi * (pathVal / totalVal)
-        let path = UIBezierPath(arcCenter: .zero, radius: 65, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        let path = UIBezierPath(arcCenter: .zero, radius: radius ?? 65, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         return path.cgPath
     }
     
@@ -152,7 +164,7 @@ class ChartPie: UIView {
         
         let layer = CATextLayer()
         
-        layer.string = "\(Int(total!))"
+        layer.string = "\(Int(expensesSavingsTotal ?? absTotal!))"
         layer.backgroundColor = UIColor.clear.cgColor
         layer.foregroundColor = textColor.cgColor
         layer.font = UIFont(name: "AmericanTypewriter-Bold", size: fontSize)

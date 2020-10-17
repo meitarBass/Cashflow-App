@@ -7,17 +7,16 @@
 
 import UIKit
 
-class ExpensePresenter {
+class DataShowPresenter {
     
-    weak var view: ExpenseViewInput?
-    var interactor: ExpenseInteractorInput?
-    var router: ExpenseRouterProtocol?
-    var tableViewManager: ExpenseTableViewManagerProtocol?
-    var data: [DataModel]?
+    weak var view: DataShowViewInput?
+    var interactor: DataShowInteractorInput?
+    var router: DataShowRouterProtocol?
+    var tableViewManager: DataShowTableViewManagerProtocol?
 }
 
 // View to Presenter
-extension ExpensePresenter: ExpensePresenterProtocol {
+extension DataShowPresenter: DataShowPresenterProtocol {
     func viewDidLoad() {
         interactor?.loadData()
     }
@@ -27,21 +26,19 @@ extension ExpensePresenter: ExpensePresenterProtocol {
 }
 
 // Interactor to Presenter
-extension ExpensePresenter: ExpensePresenterInput {
+extension DataShowPresenter: DataShowPresenterInput {
     func gotDataSuccess(data: [DataModel],
                         expenses: ([categories : Int]?, Int),
                         savings: ([categories : Int]?, Int)) {
-        self.data = data
         self.tableViewManager?.setUpCells(data: data)
-        
         self.view?.gotDataSuccess(expenses: expenses,
                                   savings: savings)
     }
 }
 
-extension ExpensePresenter: ExpensesTableViewManagerDelegate {
+extension DataShowPresenter: DataShowTableViewManagerDelegate {
     func deleteRowData(row: Int) {
         interactor?.deleteData(row: row)
-        interactor?.loadData()
+        view?.refresh()
     }
 }

@@ -8,13 +8,13 @@
 import UIKit
 
 //Presenter to Data
-protocol ExpenseRouterProtocol {
+protocol DataShowRouterProtocol {
     var view: UIViewController? { get set }
     func createAddAlert()
 }
 
 
-class ExpenseRouter: ExpenseRouterProtocol {
+class ExpenseRouter: DataShowRouterProtocol {
     
     weak var view: UIViewController?
     

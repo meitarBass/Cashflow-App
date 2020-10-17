@@ -6,7 +6,7 @@
 //
 
 // Presenter to View
-protocol ExpenseViewInput: class {
+protocol DataShowViewInput: class {
     func gotDataSuccess(expenses: ([categories : Int]?, Int),
                         savings: ([categories : Int]?, Int))
     func refresh()

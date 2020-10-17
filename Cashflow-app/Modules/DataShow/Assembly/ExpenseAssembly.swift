@@ -9,10 +9,10 @@ import UIKit
 
 class ExpenseAssembly {
     static func assemble() -> UIViewController {
-        let view = ExpenseViewController()
-        let tableViewManager = ExpenseTableViewManager()
-        let presenter = ExpensePresenter()
-        let interactor = ExpenseInteractor()
+        let view = DataShowViewController()
+        let tableViewManager = DataShowTableViewManager()
+        let presenter = DataShowPresenter()
+        let interactor = DataShowInteractor()
         let router = ExpenseRouter()
         
         view.presenter = presenter

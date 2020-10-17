@@ -69,5 +69,13 @@ extension UIColor {
     public class var gradientOther: (UIColor, UIColor) {
         (#colorLiteral(red: 0.7764705882, green: 0.9176470588, blue: 0.5529411765, alpha: 1), #colorLiteral(red: 0.9960784314, green: 0.5647058824, blue: 0.6862745098, alpha: 1))
     }
+    
+    public class var gradientExpenses: (UIColor, UIColor) {
+        (#colorLiteral(red: 1, green: 0.6, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.368627451, blue: 0.3843137255, alpha: 1))
+    }
+    
+    public class var gradientSavingsCategory: (UIColor, UIColor) {
+        (#colorLiteral(red: 0.2039215686, green: 0.9098039216, blue: 0.6196078431, alpha: 1), #colorLiteral(red: 0.05882352941, green: 0.2039215686, blue: 0.262745098, alpha: 1))
+    }
 }
 
