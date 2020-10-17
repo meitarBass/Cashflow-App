@@ -396,10 +396,8 @@
 			isa = PBXGroup;
 			children = (
 				A9E287632538DA2F004447CC /* View */,
-				A9E287642538DA39004447CC /* Managers */,
 				A9E287682538DA51004447CC /* Presenter */,
 				A9E287672538DA4D004447CC /* Interactor */,
-				A9E287662538DA49004447CC /* Router */,
 				A9E287652538DA41004447CC /* Assembly */,
 			);
 			path = AddData;
@@ -414,26 +412,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		A9E287642538DA39004447CC /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
 		A9E287652538DA41004447CC /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
 				A970BFF82538DD7600A994AB /* AddDataAssembly.swift */,
 			);
 			path = Assembly;
-			sourceTree = "<group>";
-		};
-		A9E287662538DA49004447CC /* Router */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		A9E287672538DA4D004447CC /* Interactor */ = {
