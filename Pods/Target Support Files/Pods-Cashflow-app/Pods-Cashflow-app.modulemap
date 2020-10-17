@@ -1,0 +1,6 @@
+framework module Pods_Cashflow_app {
+  umbrella header "Pods-Cashflow-app-umbrella.h"
+
+  export *
+  module * { export * }
+}
