@@ -159,10 +159,30 @@ class ChartPie: UIView {
         
         let width = frame.size.width
         let height = frame.size.height
-        
-        let fontSize: CGFloat = 36.0
-        
+                
         let layer = CATextLayer()
+        
+        var fontSize: CGFloat = 32.0
+        
+        let expenseSavingAbs: CGFloat = abs(expensesSavingsTotal ?? absTotal!)
+        
+        if expenseSavingAbs > 1000000000000 {
+            layer.string = "error"
+        } else if expenseSavingAbs > 10000000000 {
+            fontSize = 12.0
+        } else if expenseSavingAbs > 1000000000 {
+            fontSize = 14.0
+        } else if expenseSavingAbs > 100000000 {
+            fontSize = 16.0
+        } else if expenseSavingAbs > 10000000 {
+            fontSize = 20.0
+        } else if expenseSavingAbs > 1000000 {
+            fontSize = 24.0
+        } else if expenseSavingAbs > 100000 {
+            fontSize = 28.0
+        } else if expenseSavingAbs > 10000 {
+            fontSize = 32.0
+        }
         
         layer.string = "\(Int(expensesSavingsTotal ?? absTotal!))"
         layer.backgroundColor = UIColor.clear.cgColor

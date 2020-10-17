@@ -12,10 +12,6 @@ struct DataCellViewModel {
     let data: DataModel?
 }
 
-protocol DataTableViewCellProtocol {
-    func setCellGradient(colors: (UIColor, UIColor))
-}
-
 class DataTableViewCell: UITableViewCell {
     
     var viewModel: DataCellViewModel? {
@@ -82,7 +78,7 @@ class DataTableViewCell: UITableViewCell {
     }
     
     private func clearGradient() {
-        guard let layers = self.layer.sublayers, layers.count > 1 else { return }
+        guard let layers = self.contentView.layer.sublayers, layers.count > 1 else { return }
         layers[0].removeFromSuperlayer()
     }
     
@@ -92,8 +88,8 @@ class DataTableViewCell: UITableViewCell {
     }
     
     private func addSubviews() {
-        self.addSubview(amountCategoryStack)
-        self.addSubview(amountLabel)
+        self.contentView.addSubview(amountCategoryStack)
+        self.contentView.addSubview(amountLabel)
     }
     
     private func makeConstraints() {
@@ -109,7 +105,7 @@ class DataTableViewCell: UITableViewCell {
     }
 }
 
-extension DataTableViewCell: DataTableViewCellProtocol {
+extension DataTableViewCell {
     func setCellGradient(colors: (UIColor, UIColor)) {
         self.colors = colors
         let gradientLayer = CAGradientLayer()
@@ -117,7 +113,7 @@ extension DataTableViewCell: DataTableViewCellProtocol {
         gradientLayer.frame = self.bounds
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        self.layer.insertSublayer(gradientLayer, at: 0)
+        self.contentView.layer.insertSublayer(gradientLayer, at: 0)
         didUseGradient = true
     }
 }

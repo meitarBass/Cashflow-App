@@ -257,6 +257,9 @@ extension AddDataViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func setCategoryPickerUI() {
+        if datePicker.isDescendant(of: self.view) {
+            datePicker.removeFromSuperview()
+        }
         addCategoryPickerView()
         createCategoryPickerConstraints()
     }
@@ -285,6 +288,9 @@ extension AddDataViewController {
     }
     
     private func setDatePickerUI() {
+        if categoryPicker.isDescendant(of: self.view) {
+            categoryPicker.removeFromSuperview()
+        }
         addDatePickerView()
         createDatePickerConstraints()
     }
