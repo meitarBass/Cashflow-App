@@ -12,6 +12,10 @@ struct DataCellViewModel {
     let data: DataModel?
 }
 
+protocol DataTableViewCellProtocol {
+    func setCellGradient(colors: (UIColor, UIColor))
+}
+
 class DataTableViewCell: UITableViewCell {
     
     var viewModel: DataCellViewModel? {
@@ -45,6 +49,9 @@ class DataTableViewCell: UITableViewCell {
     }()
     
     private let appearance = Appearance()
+    private var didUseGradient = false
+    
+    var colors: (UIColor, UIColor)?
     
     private lazy var amountCategoryStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [categoryLabel, dateLabel])
@@ -61,6 +68,22 @@ class DataTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if didUseGradient {
+            clearGradient()
+        }
+        
+        guard let colors = colors else { return }
+        setCellGradient(colors: colors)
+        
+    }
+    
+    private func clearGradient() {
+        guard let layers = self.layer.sublayers, layers.count > 1 else { return }
+        layers[0].removeFromSuperlayer()
     }
     
     private func setupUI() {
@@ -83,5 +106,18 @@ class DataTableViewCell: UITableViewCell {
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().inset(8)
         }
+    }
+}
+
+extension DataTableViewCell: DataTableViewCellProtocol {
+    func setCellGradient(colors: (UIColor, UIColor)) {
+        self.colors = colors
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colors.0.cgColor, colors.1.cgColor]
+        gradientLayer.frame = self.bounds
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        self.layer.insertSublayer(gradientLayer, at: 0)
+        didUseGradient = true
     }
 }

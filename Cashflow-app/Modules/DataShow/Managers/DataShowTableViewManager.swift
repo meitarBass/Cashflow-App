@@ -65,6 +65,10 @@ extension DataShowTableViewManager: UITableViewDataSource {
         let cellViewModel = DataCellViewModel(data: cashFlow?[indexPath.row])
         cell.viewModel = cellViewModel
         cell.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3)
+        if let categoryName = cellViewModel.data?.category {
+            guard let category = categories(rawValue: categoryName) else { return cell}
+            cell.colors = category.getColors(category: category)
+        }
         return cell
     }
     
@@ -74,7 +78,6 @@ extension DataShowTableViewManager: UITableViewDataSource {
         data.amount = transaction[indexPath.row].amount
         data.category = transaction[indexPath.row].category
         data.date = transaction[indexPath.row].date
-        
         if editingStyle == .delete {
             delegate?.deleteRowData(row: indexPath.row)
         }
